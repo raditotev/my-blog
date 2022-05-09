@@ -1,6 +1,7 @@
 ---
 title: Set up automation tests in CircleCI
-created: 2018-12-09
+date: 2018-12-09
+description: Description of the work done integrating e2e test in the CircleCI CI/CD. Article contains also yaml file for each of the jobs discussed.
 ---
 
 Recently the company I work for moved the CI/CD from Shippable to CircleCI. This is a quick guide on how to create job and workflow.I have created two different workflows for my needs . One called **nightly** running all tests from the feature tests repo every day from Monday to Friday at 4am and one used externally from the application under test workflow called **feature-tests**.

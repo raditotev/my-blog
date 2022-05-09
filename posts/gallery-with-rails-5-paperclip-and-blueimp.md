@@ -1,13 +1,14 @@
 ---
 title: Gallery with Rails 5, Paperclip and blueimp
-created: 2016-10-16
+date: 2016-10-16
+description: Building a gallery with Rails 5, Paperclip for image processing and blueimp for JS image interaction.
 ---
 
 Recently I had to build gallery with Rails and it took me a few days finding solutions to my problems on the web. This article is the result of everything I found put together. I'll keep it as brief as possible and if you have any questions please drop me an email and I'll try to explain as best as I can.
 
 Alright, enough chit chat let's roll our sleeves. First we have to create our new project.
 
-```
+```bash
 rails new gallery -T
 ```
 
@@ -28,7 +29,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 Run bundle install.  
 Install simple_form.
 
-```
+```bash
 rails generate simple_form:install
 ```
 
@@ -44,20 +45,20 @@ Change the name of your application.css to application.scss and import bootstrap
 Now that we have all the gems it's time to create our resources. We'll need models and two controllers for Album and Photo. For the Album we'll need all controller actions and for the Photo only destroy action.
 Lets start with the Album first.
 
-```
+```bash
 rails g scaffold Album name description
 ```
 
 This creates the controller, the model and prepares the table for us.
 Lets create the controller, model and table for our Photos. We'll need only destroy action, so we run the following generator:
 
-```
+```bash
 rails g controller Photos destroy
 ```
 
 And for the model:
 
-```
+```bash
 rails g model Photo name imageable:references
 ```
 
@@ -80,7 +81,7 @@ rails db:migrate
 
 Having the tables ready, it's time to add the fields for paperclip. The simplest way is to run paperclip's generator.
 
-```
+```bash
 rails generate paperclip photo image
 ```
 
@@ -561,7 +562,7 @@ h2{
 
 That's it. Our gallery project is done. I'll throw a few screenshots for those of you who didn't do it.
 
-<img src="http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/13/content_index.png" />
-<img src="http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/12/content_new.png" />
-<img src="http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/9/content_edit.png" />
-<img src="http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/16/content_show.png" />
+![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/13/content_index.png#center)
+![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/12/content_new.png#center)
+![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/9/content_edit.png#center)
+![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/16/content_show.png#center)
