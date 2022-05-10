@@ -15,7 +15,11 @@ const CodeBlock = {
         {String(children).replace(/\n$/, '')}
       </SyntaxHighlighter>
     ) : (
-      <code className={`inline${className ? ` ${className}` : ''}`} {...props}>
+      <code
+        className={className}
+        style={{ fontSize: '1rem', color: 'crimson' }}
+        {...props}
+      >
         {children}
       </code>
     );
