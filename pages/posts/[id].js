@@ -5,6 +5,7 @@ import Layout from '../../components/Layout';
 import CodeBlock from '../../components/Codeblock';
 import TimeStamp from '../../components/TimeStamp';
 import Link from 'next/link';
+import Head from 'next/head';
 
 export const getStaticPaths = async () => {
   const paths = getAllPostIds();
@@ -27,6 +28,10 @@ export const getStaticProps = async ({ params }) => {
 const Post = ({ post }) => {
   return (
     <Layout>
+      <Head>
+        <meta name="og:title" content={post.title} />
+        <title>{post.title}</title>
+      </Head>
       <div className="post">
         <header>
           <h1>{post.title}</h1>

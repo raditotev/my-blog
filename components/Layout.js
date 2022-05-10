@@ -8,6 +8,7 @@ const Layout = ({ children }) => {
     <div>
       <Head>
         <meta name="og:title" content={siteTitle} />
+        <title>{siteTitle}</title>
       </Head>
       <header>
         <div>
