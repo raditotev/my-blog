@@ -49,6 +49,11 @@ const Layout = ({ children }) => {
           margin: auto;
         }
 
+        code.inline {
+          font-size: 1rem;
+          color: red;
+        }
+
         @media (max-width: 820px) {
           img {
             max-width: 80vw;
