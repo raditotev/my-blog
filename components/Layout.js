@@ -7,8 +7,6 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="A collection of technical posts." />
         <meta name="og:title" content={siteTitle} />
       </Head>
       <header>
