@@ -4,11 +4,11 @@ date: 2018-12-09
 description: Description of the work done integrating e2e test in the CircleCI CI/CD. Article contains also yaml file for each of the jobs discussed.
 ---
 
-Recently the company I work for moved the CI/CD from Shippable to CircleCI. This is a quick guide on how to create job and workflow.I have created two different workflows for my needs . One called **nightly** running all tests from the feature tests repo every day from Monday to Friday at 4am and one used externally from the application under test workflow called **feature-tests**.
+Recently the company I work for moved the CI/CD from Shippable to CircleCI. This is a quick guide on how to create a job and workflow.I have created two different workflows for my needs . One called **nightly** running all tests from the feature tests repo every day from Monday to Friday at 4am and one used externally from the application under test workflow called **feature-tests**.
 
 ## Nightly
 
-First create the job. I have called mine tests. Then I specified base docker image I want to use for the job, i.e. `circleci/ruby:2.5-browsers-legacy`. I won't go in too much detail for all the steps because they will be generated automatically for you once you add you automation tests in CircleCI (for more informarion see [here](https://circleci.com/docs/2.0/project-build/#section=getting-started)). The most important to know about the job is that you'll have to use bundle install cucumber instead of just cucumber because all gems will be instaled in custom location `bundle install --jobs=4 --retry=3 --path vendor/bundle`. The other tip is to specify the path where the test reports can be found after completion - `store_test_results: path: /tmp`. Make sure the path set is the same as the one you have in `cucumber.yml`. Also make sure the output format is junit so you can see the number of passing and failing tests at first glance in the tab **Results** after job is finished.
+First create the job. I have called mine tests. Then I specified the base docker image I want to use for the job, i.e. `circleci/ruby:2.5-browsers-legacy`. I won't go in too much detail for all the steps because they will be generated automatically for you once you add you automation tests in CircleCI (for more information see [here](https://circleci.com/docs/2.0/project-build/#section=getting-started)). The most important thing to know about the job is that you'll have to use bundle install cucumber instead of just cucumber because all gems will be installed in a custom location `bundle install --jobs=4 --retry=3 --path vendor/bundle`. The other tip is to specify the path where the test reports can be found after completion - `store_test_results: path: /tmp`. Make sure the path set is the same as the one you have in `cucumber.yml`. Also make sure the output format is junit so you can see the number of passing and failing tests at first glance in the tab **Results** after the job is finished.
 
 ```yml
 # /.circleci/config.yml
@@ -67,7 +67,7 @@ workflows:
           context: featuretests
 ```
 
-After you finish with the job section create nightly workflow that runs on a schedule. Set the time when the job should be triggered in the `cron` field and set the branch with the code you want executed. In the `job` field declare you want this workflow to run the job set up above, i.e. `test` and in the `context` field set the name set in CircleCI with all project secrets.
+After you finish with the job section, create nightly workflow that runs on a schedule. Set the time when the job should be triggered in the `cron` field and set the branch with the code you want executed. In the `job` field declare you want this workflow to run the job set up above, i.e. `test` and in the `context` field set the name set in CircleCI with all project secrets.
 
 ## Feature-tests
 
@@ -80,7 +80,7 @@ steps:
         - 'SO:ME:FIN:G:ER:PR:IN:T'
 ```
 
-My assumption was that during build the job will use the ssh keys set in the circleci project secrets section if no fingerprints field present in the steps and once it gets to a step with fingerprints it will use the ones provided. It turns out that if there are ssh keys set CircleCI doesn't look for any other and uses the same set for authentications. I already had docker image for my tests and all I had to do was to pull my image and use it to spin a container for my tests. The rest of the steps are similar to the nightly example except the caching and installation of dependencies.
+My assumption was that during build the job will use the ssh keys set in the circleci project secrets section if no fingerprints field present in the steps and once it gets to a step with fingerprints it will use the ones provided. It turns out that if there are ssh keys set CircleCI doesn't look for any other and uses the same set for authentications. I already had a docker image for my tests and all I had to do was to pull my image and use it to spin a container for my tests. The rest of the steps are similar to the nightly example except the caching and installation of dependencies.
 
 ```yml
 feature-tests:
@@ -99,7 +99,7 @@ feature-tests:
         path: /reports
 ```
 
-Once the job was defined I was ready to include it in the project workflow. I wanted my tests to run once the application under test was deployed to staging. To do so I used `requires` field and set it up to `deploy` and also specified in filters > branches that I only want to run the tests when application deployed in staging.
+Once the job was defined I was ready to include it in the project workflow. I wanted my tests to run once the application under test was deployed to staging. To do so I used the `requires` field and set it up to `deploy` and also specified in filters > branches that I only want to run the tests when the application is deployed in staging.
 
 ```yml
 # /.circleci/config.yml

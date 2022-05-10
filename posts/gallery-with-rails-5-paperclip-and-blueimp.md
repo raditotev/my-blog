@@ -4,7 +4,7 @@ date: 2016-10-16
 description: Building a gallery with Rails 5, Paperclip for image processing and blueimp for JS image interaction.
 ---
 
-Recently I had to build gallery with Rails and it took me a few days finding solutions to my problems on the web. This article is the result of everything I found put together. I'll keep it as brief as possible and if you have any questions please drop me an email and I'll try to explain as best as I can.
+Recently I had to build a gallery with Rails and it took me a few days finding solutions to my problems on the web. This article is the result of everything I found, put together. I'll keep it as brief as possible and if you have any questions please drop me an email and I'll try to explain as best as I can.
 
 Alright, enough chit chat let's roll our sleeves. First we have to create our new project.
 
@@ -43,14 +43,14 @@ Change the name of your application.css to application.scss and import bootstrap
 ```
 
 Now that we have all the gems it's time to create our resources. We'll need models and two controllers for Album and Photo. For the Album we'll need all controller actions and for the Photo only destroy action.
-Lets start with the Album first.
+Let's start with the Album first.
 
 ```bash
 rails g scaffold Album name description
 ```
 
 This creates the controller, the model and prepares the table for us.
-Lets create the controller, model and table for our Photos. We'll need only destroy action, so we run the following generator:
+Let's create the controller, model and table for our Photos. We'll need only destroy action, so we run the following generator:
 
 ```bash
 rails g controller Photos destroy
@@ -62,7 +62,7 @@ And for the model:
 rails g model Photo name imageable:references
 ```
 
-I've created Photo as polymorophic model for the needs of my project and I'll leave it as polymorphic for this project. It's good to see how polymorphic models are used if you haven't done it before.
+I've created Photo as polymorphic model for the needs of my project and I'll leave it as polymorphic for this project. It's good to see how polymorphic models are used if you haven't done it before.
 Before we run the migration and create the tables, there are some changes we have to do for the photos table.
 
 ```ruby
@@ -85,7 +85,7 @@ Having the tables ready, it's time to add the fields for paperclip. The simplest
 rails generate paperclip photo image
 ```
 
-And `rails db:migarte` again to add the new columns for paperclip to the photos table.  
+And `rails db:migrate` again to add the new columns for paperclip to the photos table.
 Now update the models.
 
 ```ruby
@@ -101,12 +101,13 @@ default_scope -> { order(created_at: :desc) }
 
 belongs_to :imageable, polymorphic: true
 
-has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" },
-                                            default_url: "/images/:style/missing.png"
+has_attached_file :image,
+  styles: { medium: "300x300>", thumb: "100x100>" },
+  default_url: "/images/:style/missing.png"
 validates_attachment_content_type :image, content_type: /image\/.*\z/
 ```
 
-When we run the generator for the Photos controller, rails has created automatically new route for us but it doesn't do what we need. Change with the code from the snippet below.
+When we run the generator for the Photos controller, rails has automatically created a new route for us but it doesn't do what we need. Change with the code from the snippet below.
 
 ```ruby
 # routes.rb
@@ -115,7 +116,7 @@ root to: "albums#index"
 delete 'photo/:id' => 'photos#destroy', as: 'photo'
 ```
 
-Next step will be to update the form partial for the Albums using simple form and rails's file_field_tag for the file attachments. We set the form to be multipart and the file_filed in order to select multiple files. All selected files will be wrapped in an array and passed to the params as a key images.
+Next step will be to update the form partial for the Albums using simple form and rails's file_field_tag for the file attachments. We set the form to be multipart and the file_filed in order to select multiple files. All selected files will be wrapped in an array and passed to the params as key images.
 
 ```erb
 <!-- albums/_form.html.erb -->
@@ -160,7 +161,7 @@ def create
 end
 ```
 
-It's time to fire up the server and see if what we've done so far is working. Go to new album and create one with a few photos. Everything works fine and we're redirected to the show page but only the album name is visible. Let's change that. Add the following div just above the links at the bottom. Refresh and hurray, we've got our photos!
+It's time to fire up the server and see if what we've done so far is working. Go to the new album and create one with a few photos. Everything works fine and we're redirected to the show page but only the album name is visible. Let's change that. Add the following div just above the links at the bottom. Refresh and hurray, we've got our photos!
 
 ```erb
 <!-- albums/show.html.erb -->
@@ -172,7 +173,7 @@ It's time to fire up the server and see if what we've done so far is working. Go
 </div>
 ```
 
-Next thing I want to change is when I create a new album and select files, instead seeing just the number of files selected I want to have some visual representation. Place a holder in the form.
+Next thing I want to change is when I create a new album and select files, instead of just seeing the number of files selected I want to have some visual representation. Place a holder in the form.
 
 ```erb
 <!-- albums/_form.html.erb -->
@@ -218,7 +219,7 @@ $(document).on('turbolinks:load', ready);
 
 I have two functions. One is to show the selected files. The other one is to clear them from the screen in case the user decides to change his selection.
 
-Another change to the form will be to display all album photos when we update existing album and provide a button in case the user wants to delete photo or photos from the collection.
+Another change to the form will be to display all album photos when we update an existing album and provide a button in case the user wants to delete a photo or photos from the collection.
 
 ```erb
 <!-- _form.html.erb -->
@@ -229,7 +230,7 @@ Another change to the form will be to display all album photos when we update ex
   <div id="images">
     <% @album.photos.each do |photo| %>
       <div id="photo-<%= photo.id %>" class="image">
-         <%= link_to photo, method: :delete,
+        <%= link_to photo, method: :delete,
                           data: { confirm: 'Are you sure?' },
                           class: "delete-image",
                           remote: true,
@@ -287,7 +288,7 @@ Create a new file views/photos/destroy.js.erb and add this code. This will look 
 $('#photo-<%= @id %>').fadeOut();
 ```
 
-Now, let's update our albums controller in case our user wants to add some photos insead of removing. Again we'll get all the photos being uploaded from the params[:images], but this time insted of blindly creating photos we have to check for duplicates first.
+Now, let's update our albums controller in case our user wants to add some photos instead of removing them. Again we'll get all the photos being uploaded from the params[:images], but this time instead of blindly creating photos we have to check for duplicates first.
 
 ```ruby
 # albums_controller.rb
@@ -296,7 +297,7 @@ def update
   respond_to do |format|
     if @album.update(album_params)
 
-     if params[:images]
+    if params[:images]
         params[:images].each do |image|
           existing_image = @album.photos.find {|photo| photo.image_file_name ==
                                                                                             image.original_filename}
@@ -340,7 +341,7 @@ background: url('loading.gif');
 
 Also download all the images from blueimp/Gallery/img in your app/assets/images folder.
 
-Now all we have to do is add snippet of code and our gallery will spring to life. Wrap our code from before in a div tag with an id "links" and add the code snippet for the modal at the bottom of the page. It is IMPORTANT to place this snippet as direct descendant of the body. If your yield in the application is wrapped in a div or another tag, place the snippet on application.html.erb directly in the body. You can also import it as a partial.
+Now all we have to do is add a snippet of code and our gallery will spring to life. Wrap our code from before in a div tag with an id "links" and add the code snippet for the modal at the bottom of the page. It is IMPORTANT to place this snippet as a direct descendant of the body. If your yield in the application is wrapped in a div or another tag, place the snippet on application.html.erb directly in the body. You can also import it as a partial.
 
 ```erb
 <!-- show.html.erb -->
@@ -432,7 +433,7 @@ Add bootstrap-sprockets after jquery in order for our dismiss button to work.
 -->
 ```
 
-In application.html.erb I'll add header.
+In application.html.erb I'll add a header.
 
 ```erb
 
@@ -486,7 +487,7 @@ remove <%= link_to 'Edit', edit_album_path(@album) %> |
  <%= link_to 'Back', albums_path %>
 ```
 
-Place new and edit pages in container.
+Place new and edit pages in the container.
 
 ```erb
 <!-- new.html.erb -->
@@ -511,7 +512,7 @@ Place new and edit pages in container.
 And the final styling.
 
 ```css
-/* appclication.scss */
+/* application.scss */
 
 /* Styling for the header section */
 @import url('https://fonts.googleapis.com/css?family=Sansita+One');
