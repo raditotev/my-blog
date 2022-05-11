@@ -9,13 +9,15 @@ const PostItem = ({ post }) => {
     <>
       <li className="post-item">
         <Card>
-          <Link href={`/posts/${id}`}>
-            <h3>{title}</h3>
+          <Link href={`/posts/${id}`} as={`/posts/${id}`}>
+            <a>
+              <h3>{title}</h3>
+            </a>
           </Link>
           <TimeStamp date={date} updated={updated} />
           <p>{description}</p>
-          <Link href={`/posts/${id}`}>
-            <a>Read more &gt;</a>
+          <Link href={`/posts/${id}`} as={`/posts/${id}`}>
+            <a className="read-more">Read more &gt;</a>
           </Link>
         </Card>
       </li>
@@ -32,7 +34,10 @@ const PostItem = ({ post }) => {
         p {
           margin-bottom: 3rem;
         }
-        a {
+        a h3 {
+          color: black;
+        }
+        a.read-more {
           position: absolute;
           right: 10px;
           bottom: 10px;

@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       </Head>
       <header>
         <div>
-          <Link href="/">
+          <Link href="/" as="/">
             <a>
               <h1>{siteTitle}</h1>
             </a>

@@ -39,7 +39,7 @@ const Post = ({ post }) => {
         </header>
         <ReactMarkdown components={CodeBlock}>{post.markdown}</ReactMarkdown>
         <footer align="right">
-          <Link href="/">
+          <Link href="/" as="/">
             <a>⬅ Back to homepage</a>
           </Link>
         </footer>
