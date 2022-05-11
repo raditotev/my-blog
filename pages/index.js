@@ -1,36 +1,37 @@
 import Layout from '../components/Layout';
 import ListPosts from '../components/ListPosts';
 import PostItem from '../components/PostItem';
-import { getSortedPostsData } from '../lib/posts';
+import CategoryItem from '../components/CategoryItem';
+import { getSortedPostsData, getCategories } from '../lib/posts';
 
 export const getStaticProps = (context) => {
   const allPostsData = getSortedPostsData();
+  const allCategories = getCategories();
+
   return {
     props: {
       posts: JSON.parse(allPostsData),
+      categories: allCategories,
     },
   };
 };
 
-export default function Home({ posts }) {
+export default function Home({ posts, categories }) {
   return (
     <Layout>
-      <ul>
-        {posts.map((post) => (
-          <PostItem key={post.id} post={post} />
+      <div className="categories">
+        {categories.map((category) => (
+          <CategoryItem key={category} category={category} />
         ))}
+      </div>
       <ListPosts posts={posts} />
       <style jsx>{`
-        ul {
-          list-style: none;
-          padding: 0;
+        .categories {
           display: flex;
-          flex-wrap: wrap;
           flex-direction: row;
-          justify-content: space-evenly;
-          align-items: stretch;
-          align-content: stretch;
-          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 1rem;
         }
       `}</style>
     </Layout>

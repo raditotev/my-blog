@@ -87,8 +87,9 @@ const Layout = ({ children }) => {
 
         main {
           display: flex;
+          flex-direction: column;
           justify-content: center;
-          margin: 10px auto;
+          margin: 20px auto;
           max-width: 820px;
         }
 

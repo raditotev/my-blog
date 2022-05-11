@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import TimeStamp from './TimeStamp';
 import Card from './Card';
+import ListCategories from './ListCategories';
 
 const PostItem = ({ post }) => {
   const { id, date, updated, title, description } = post;
@@ -9,6 +10,7 @@ const PostItem = ({ post }) => {
     <>
       <li className="post-item">
         <Card>
+          <ListCategories categories={post.categories} />
           <Link href={`/posts/${id}`} as={`/posts/${id}`}>
             <a>
               <h3>{title}</h3>
@@ -28,7 +30,7 @@ const PostItem = ({ post }) => {
         }
         h3 {
           font-size: 32px;
-          margin-bottom: 0.2rem;
+          margin: 0.3rem auto;
           cursor: pointer;
         }
         p {

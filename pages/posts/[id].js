@@ -6,6 +6,7 @@ import CodeBlock from '../../components/Codeblock';
 import TimeStamp from '../../components/TimeStamp';
 import Link from 'next/link';
 import Head from 'next/head';
+import ListCategories from '../../components/ListCategories';
 
 export const getStaticPaths = async () => {
   const paths = getAllPostIds();
@@ -17,7 +18,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id);
+  const postData = getPostData(params.id);
   return {
     props: {
       post: JSON.parse(postData),
@@ -38,7 +39,8 @@ const Post = ({ post }) => {
           <TimeStamp date={post.date} updated={post.updated}></TimeStamp>
         </header>
         <ReactMarkdown components={CodeBlock}>{post.markdown}</ReactMarkdown>
-        <footer align="right">
+        <footer>
+          <ListCategories categories={post.categories} />
           <Link href="/" as="/">
             <a>⬅ Back to homepage</a>
           </Link>
@@ -57,6 +59,10 @@ const Post = ({ post }) => {
         }
         a {
           color: black;
+        }
+        footer {
+          display: flex;
+          justify-content: space-between;
         }
       `}</style>
     </Layout>
