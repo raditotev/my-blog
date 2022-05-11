@@ -10,7 +10,7 @@ const TimeStamp = ({ date, updated }) => {
       <time dateTime={date}>{dateString}</time>
       <style jsx>{`
         span {
-          color: gray;
+          color: #333;
           font-size: 0.9rem;
         }
       `}</style>
