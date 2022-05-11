@@ -23,6 +23,7 @@ const PostItem = ({ post }) => {
           position: relative;
         }
         h3 {
+          font-size: 32px;
           margin-bottom: 0.2rem;
         }
         p {

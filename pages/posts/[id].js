@@ -55,7 +55,6 @@ const Post = ({ post }) => {
         .post h1 {
           margin-bottom: 0.2rem;
         }
-
         a {
           color: black;
         }

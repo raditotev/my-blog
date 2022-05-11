@@ -29,10 +29,16 @@ const Layout = ({ children }) => {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+          font-size: 20px;
         }
 
         * {
           box-sizing: border-box;
+        }
+
+        p {
+          font-weight: 400;
+          line-height: 32px;
         }
 
         a {
@@ -49,6 +55,14 @@ const Layout = ({ children }) => {
         }
 
         @media (max-width: 820px) {
+          body {
+            font-size: 18px;
+          }
+
+          p {
+            line-height: 28px;
+          }
+
           img {
             max-width: 80vw;
           }
