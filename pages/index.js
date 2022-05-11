@@ -31,7 +31,8 @@ export default function Home({ posts, categories }) {
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: space-between;
-          gap: 1rem;
+          gap: 10px;
+          margin: 30px 0;
         }
       `}</style>
     </Layout>

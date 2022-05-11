@@ -34,7 +34,7 @@ const PostItem = ({ post }) => {
           cursor: pointer;
         }
         p {
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
         }
         a h3 {
           color: black;

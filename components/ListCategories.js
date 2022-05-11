@@ -4,7 +4,6 @@ const ListCategories = ({ categories }) => {
   return (
     <>
       <div className="list-categories">
-        🗂{' '}
         {categories.map((category) => (
           <Link href={`/categories/${category}`} key={category}>
             <a>{category}</a>
