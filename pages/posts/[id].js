@@ -40,7 +40,7 @@ const Post = ({ post }) => {
         <ReactMarkdown components={CodeBlock}>{post.markdown}</ReactMarkdown>
         <footer align="right">
           <Link href="/">
-            <a>⬅ Back to homepage</a>
+            <span>⬅ Back to homepage</span>
           </Link>
         </footer>
       </div>
@@ -55,8 +55,8 @@ const Post = ({ post }) => {
         .post h1 {
           margin-bottom: 0.2rem;
         }
-        a {
-          color: black;
+        footer span {
+          cursor: pointer;
         }
       `}</style>
     </Layout>

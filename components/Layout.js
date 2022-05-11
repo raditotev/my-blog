@@ -13,9 +13,7 @@ const Layout = ({ children }) => {
       <header>
         <div>
           <Link href="/">
-            <a>
-              <h1>{siteTitle}</h1>
-            </a>
+            <h1>{siteTitle}</h1>
           </Link>
         </div>
       </header>
@@ -78,13 +76,9 @@ const Layout = ({ children }) => {
         }
         header h1 {
           margin: 0;
-        }
-
-        header a {
-          text-decoration: none;
           color: crimson;
+          cursor: pointer;
         }
-
         main {
           display: flex;
           justify-content: center;
