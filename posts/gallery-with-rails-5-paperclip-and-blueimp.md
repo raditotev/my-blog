@@ -2,6 +2,11 @@
 title: Gallery with Rails 5, Paperclip and blueimp
 date: 2016-10-16
 description: Building a gallery with Rails 5, Paperclip for image processing and blueimp for JS image interaction.
+categories:
+  - rails
+  - gallery
+  - ruby
+  - paperclip
 ---
 
 Recently I had to build a gallery with Rails and it took me a few days finding solutions to my problems on the web. This article is the result of everything I found, put together. I'll keep it as brief as possible and if you have any questions please drop me an email and I'll try to explain as best as I can.

@@ -2,6 +2,8 @@
 title: Embed Google Analytics in Your Admin Page
 date: 2016-07-24
 description: Having Google analytics visualization on your dashboard could be very handy. In this article you can see an easy way of adding analytics graphs with the use of Google spreadsheets.
+categories:
+  - analytics
 ---
 
 I find it nice and useful to have some statistics on your admin dashboard. To do this you don't have to necessarily use Google Analytics API on your site but create reports on Google Spreadsheet and then embed the graphs on your page. In this video it is very well explained how to create reports and then graphs representing the data from the reports. Watch the video and create the graphs you want to have for your website.

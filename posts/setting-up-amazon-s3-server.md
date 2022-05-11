@@ -2,6 +2,9 @@
 title: Setting Up Amazon S3 Server
 date: 2016-07-03
 description: If you are setting up Amazon AWS S3 server for your static files, this article might help you answer some questions and ease the process.
+categories:
+  - aws
+  - s3
 ---
 
 If this is the first time you're about to use Amazon Web Services you might find it a bit confusing to say the least. It took me a few hours going through the documentation and number of related posts to finally get it done. Hopefully this will help and save you some time.
