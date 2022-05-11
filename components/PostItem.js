@@ -9,7 +9,9 @@ const PostItem = ({ post }) => {
     <>
       <li className="post-item">
         <Card>
-          <h3>{title}</h3>
+          <Link href={`/posts/${id}`}>
+            <h3>{title}</h3>
+          </Link>
           <TimeStamp date={date} updated={updated} />
           <p>{description}</p>
           <Link href={`/posts/${id}`}>
@@ -25,6 +27,7 @@ const PostItem = ({ post }) => {
         h3 {
           font-size: 32px;
           margin-bottom: 0.2rem;
+          cursor: pointer;
         }
         p {
           margin-bottom: 3rem;
