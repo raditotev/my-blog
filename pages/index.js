@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import ListPosts from '../components/ListPosts';
 import PostItem from '../components/PostItem';
 import { getSortedPostsData } from '../lib/posts';
 
@@ -18,7 +19,7 @@ export default function Home({ posts }) {
         {posts.map((post) => (
           <PostItem key={post.id} post={post} />
         ))}
-      </ul>
+      <ListPosts posts={posts} />
       <style jsx>{`
         ul {
           list-style: none;
