@@ -11,14 +11,14 @@ const PostItem = ({ post }) => {
       <li className="post-item">
         <Card>
           <ListCategories categories={post.categories} />
-          <Link href={`/posts/${id}`} as={`/posts/${id}`}>
+          <Link href={`/posts/${id}`}>
             <a>
               <h3>{title}</h3>
             </a>
           </Link>
           <TimeStamp date={date} updated={updated} />
           <p>{description}</p>
-          <Link href={`/posts/${id}`} as={`/posts/${id}`}>
+          <Link href={`/posts/${id}`}>
             <a className="read-more">Read more &gt;</a>
           </Link>
         </Card>
