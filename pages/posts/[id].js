@@ -42,7 +42,7 @@ const Post = ({ post }) => {
         <footer>
           <ListCategories categories={post.categories} />
           <Link href="/">
-            <a>⬅ Back to homepage</a>
+            <a className="go-back">🏠</a>
           </Link>
         </footer>
       </div>
@@ -62,7 +62,19 @@ const Post = ({ post }) => {
         }
         footer {
           display: flex;
+          flex-wrap: wrap;
           justify-content: space-between;
+        }
+        footer a.go-back {
+          font-size: 1.5rem;
+        }
+        @media (max-width: 820px) {
+          footer {
+            display: block;
+          }
+          footer a.go-back {
+            float: right;
+          }
         }
       `}</style>
     </Layout>
