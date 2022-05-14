@@ -4,7 +4,9 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "deploy": "next build && next export && echo 'blog.radi.pro' > out/CNAME && git add out/ && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "next build && next export && echo 'blog.radi.pro' > out/CNAME && git add out/ && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages",
+    "test": "jest --watch",
+    "test:ci": "jest --ci"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -13,5 +15,12 @@
     "react-dom": "17.0.2",
     "react-markdown": "^8.0.3",
     "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^14.2.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0"
   }
 }
