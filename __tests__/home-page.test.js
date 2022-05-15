@@ -1,5 +1,7 @@
 import { within, render, screen } from '@testing-library/react';
+
 import { posts, categories } from './fixures';
+import { dateString } from '../lib/misc';
 import Home from '../pages';
 
 test('home page', () => {
@@ -19,11 +21,7 @@ test('home page', () => {
   const postsSection = document.querySelector('.posts');
 
   posts.forEach((post) => {
-    const date = new Date(post.date).toLocaleDateString('en-GB', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
+    const date = dateString(post.date);
     expect(
       within(postsSection).getByRole('link', { name: post.title })
     ).toBeInTheDocument();

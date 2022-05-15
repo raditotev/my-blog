@@ -1,13 +1,11 @@
+import { dateString } from '../lib/misc';
+
 const TimeStamp = ({ date, updated }) => {
-  const dateString = new Date(date).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+  const formattedDate = dateString(date);
   return (
     <span>
       {updated ? 'Updated ' : ''}
-      <time dateTime={date}>{dateString}</time>
+      <time dateTime={date}>{formattedDate}</time>
       <style jsx>{`
         span {
           color: #333;
