@@ -1,6 +1,6 @@
 import { within, render, screen } from '@testing-library/react';
 import { posts, categories } from './fixures';
-import Home from '../pages/';
+import Home from '../pages';
 
 test('home page', () => {
   render(<Home posts={posts} categories={categories} />);
