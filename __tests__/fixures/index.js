@@ -44,3 +44,14 @@ export const categories = [
   'aws',
   's3',
 ];
+
+export const post = {
+  id: 'set-up-automation-tests-in-circleci',
+  title: 'Set up automation tests in CircleCI',
+  date: '2018-12-09T00:00:00.000Z',
+  description:
+    'Description of the work done integrating e2e test in the CircleCI CI/CD. Article contains also yaml file for each of the jobs discussed.',
+  categories: ['devops', 'circleci', 'ruby'],
+};
+
+export const mockedPostContent = 'Mocked markdown content';
