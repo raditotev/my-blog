@@ -8,6 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --ci",
+    "prepare": "husky install"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -22,6 +23,7 @@
     "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.2.0",
     "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0"
+    "jest-environment-jsdom": "^28.1.0",
+    "husky": "^7.0.0"
   }
 }
