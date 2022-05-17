@@ -5,8 +5,9 @@
     "build": "next build && next export",
     "start": "next start",
     "deploy": "next build && next export && echo 'blog.radi.pro' > out/CNAME && git add out/ && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages",
-    "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci",
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
