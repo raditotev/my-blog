@@ -22,7 +22,7 @@ jobs:
       - run: |
           npm ci
           npm run build
-          echo "blog.radi.pro" > build/CNAME
+          echo "blog.radi.pro" > out/CNAME
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3
