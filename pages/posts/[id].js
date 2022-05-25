@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Layout from '../../components/Layout';
-import CodeBlock from '../../components/Codeblock';
+import CodeBlock from '../../components/CodeBlock';
 import TimeStamp from '../../components/TimeStamp';
 import Link from 'next/link';
 import Head from 'next/head';
