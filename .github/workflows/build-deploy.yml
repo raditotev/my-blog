@@ -14,11 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install and Build
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-      - uses: actions/cache@v2
+      - name: Caching
+        uses: actions/cache@v2
         with:
           path: |
             ~/.npm
@@ -28,6 +25,11 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+      - name: Install and Build
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
       - run: |
           npm ci
           npm run build
