@@ -22,9 +22,7 @@ describe('category page', () => {
         name: `${selectedCategory}: ${filteredPosts.length} post`,
       })
     ).toBeInTheDocument();
-    expect(screen.getAllByRole('link', { name: /read more >/i }).length).toBe(
-      1
-    );
+    expect(screen.getAllByRole('link', { name: /more >/i }).length).toBe(1);
   });
 
   test('multiple posts', () => {
@@ -37,8 +35,6 @@ describe('category page', () => {
         name: `${selectedCategory}: ${filteredPosts.length} posts`,
       })
     ).toBeInTheDocument();
-    expect(screen.getAllByRole('link', { name: /read more >/i }).length).toBe(
-      2
-    );
+    expect(screen.getAllByRole('link', { name: /more >/i }).length).toBe(2);
   });
 });

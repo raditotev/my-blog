@@ -19,7 +19,7 @@ const PostItem = ({ post }) => {
           <TimeStamp date={date} updated={updated} />
           <p>{description}</p>
           <Link href={`/posts/${id}`}>
-            <a className="read-more">Read more &gt;</a>
+            <a className="read-more">more &gt;</a>
           </Link>
         </Card>
       </li>
