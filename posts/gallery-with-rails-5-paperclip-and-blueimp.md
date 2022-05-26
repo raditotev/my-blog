@@ -568,7 +568,7 @@ h2{
 
 That's it. Our gallery project is done. I'll throw a few screenshots for those of you who didn't do it.
 
-![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/13/content_index.png#center)
-![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/12/content_new.png#center)
-![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/9/content_edit.png#center)
-![Gallery screenshot](http://s3.amazonaws.com/my-personal-page-static-content/app/public/ckeditor_assets/pictures/16/content_show.png#center)
+![Gallery screenshot](https://blog-radi.s3.amazonaws.com/gallery-with-rails-5-paperclip-and-blueimp/content_index.png#center)
+![Gallery screenshot](https://blog-radi.s3.amazonaws.com/gallery-with-rails-5-paperclip-and-blueimp/content_new.png#center)
+![Gallery screenshot](https://blog-radi.s3.amazonaws.com/gallery-with-rails-5-paperclip-and-blueimp/content_edit.png#center)
+![Gallery screenshot](https://blog-radi.s3.amazonaws.com/gallery-with-rails-5-paperclip-and-blueimp/content_show.png#center)
