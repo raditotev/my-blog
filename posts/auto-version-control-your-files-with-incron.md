@@ -9,8 +9,8 @@ categories:
 
 This article's intention is to provide instructions on setting auto version control for a given location. If you want to learn more about `incron` I suggest you visit the [official page](https://inotify.aiken.cz/?section=incron&page=doc&lang=en) and [github](https://github.com/ar-/incron).
 
-If you want to follow along I have prepared a `Dockerfile` you can use to build an image, you can then use to spin a container:  
-<sub>ℹ️ you should have [Docker](https://docs.docker.com/get-docker/) installed</sub>
+To follow along I have prepared a `Dockerfile` you can use to build an image, you can then use to spin a container:  
+ℹ️ you should have [Docker](https://docs.docker.com/get-docker/) installed
 
 ```dockerfile
 FROM ubuntu:22.04
@@ -63,7 +63,7 @@ To create new entry we need the following:
 <path>  <mask>  <command>
 ```
 
-Where `path` is the location of the file or folder on the machine we want to monitor, the `mask` is the event we want to listen for and the `command` is the action we want to apply. In this demo we want to monitor the `/cdn/content` folder. The events we want to listen for are `IN_MODIFY,IN_CREATE,IN_DELETE,IN_MOVE` and we want to run the commands from a bash script which we'll call `cdn-auto-version.sh` and place in the `/` root folder. This will be the content of the `cdn-auto-version.sh`:
+Where `path` is the location of the file or folder on the machine we want to monitor, the `mask` is the event we want to listen for and the `command` is the action we want to apply. In this demo we want to monitor the `/cdn/content` folder. The events we want to listen for are `IN_MODIFY,IN_CREATE,IN_DELETE,IN_MOVE` and we want to run the commands from a bash script which we'll call `cdn-auto-version.sh` and place in the `/` root folder. The content of the `cdn-auto-version.sh` will be:
 
 ```bash
 #!/bin/bash
@@ -77,7 +77,7 @@ git commit -m "Updated on $(date +'%d-%m-%y') at $(date +'%T') UTC"
 git push
 ```
 
-Next we have to make the script executable. Make sure you're in the root folder:
+Next we have to make the script, executable. Make sure you're in the root folder:
 
 ```bash
 cd /
@@ -86,7 +86,7 @@ chmod 755 cdn-auto-version.sh
 
 ℹ️ You will also have to add ssh keys in `/.ssh` for the repository you will be working with. I am not going to touch on this in the article but there is plenty of material in Google on how to do this.
 
-With all this done we are ready to create our `incrontab` entry. Execute
+With all this done we are ready to create our `incrontab` entry. Execute:
 
 ```bash
 incrontab -e
@@ -114,4 +114,4 @@ incrontab  -l
 With this `/cdn/content` will automatically update the remote repo you've set up every time there are changes to the files or folders within.
 
 I have used this post as a reference on how to set up and work with `incron`:  
-https://www.geeksforgeeks.org/incron-command-in-linux-with-examples/
+<https://www.geeksforgeeks.org/incron-command-in-linux-with-examples/>
