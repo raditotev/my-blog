@@ -6,7 +6,7 @@ categories:
   - macos
 ---
 
-Following the instructions in this article help reduce the time you spend in preparation each morning and also will help you more abruptly end your working day.
+Following the instructions in this article will help reduce the time you spend in preparation each morning and also will help you more abruptly end your working day.
 
 If you are like me and use your machine for work and private stuff you probably start your day opening a bunch of applications and then by the end of the day also closing them. In the process you might forget to start an application - for example one that is important to me is clockify (used for tracking time spent on a project) or you might get carried away when closing them, e.g. checking your mail before the end of the day and start acting on an incoming e-mail.
 
