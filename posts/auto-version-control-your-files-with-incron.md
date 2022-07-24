@@ -63,7 +63,7 @@ To create new entry we need the following:
 <path>  <mask>  <command>
 ```
 
-Where `path` is the location of the file or folder on the machine we want to monitor, the `mask` is the event we want to listen for and the `command` is the action we want to apply. In this demo we want to monitor the `/cdn/content` folder. The events we want to listen for are `IN_MODIFY,IN_CREATE,IN_DELETE,IN_MOVE` and we want to run the commands from a bash script which we'll call `cdn-auto-version.sh` and place in the `/` root folder. The content of the `cdn-auto-version.sh` will be:
+Where `path` is the location of the file or folder on the machine we want to monitor, the `mask` is the event we want to listen for and the `command` is the action we want to apply. In this demo we want to monitor the `/cdn/content` folder. The events we want to listen for are `IN_MODIFY`, `IN_CREATE`, `IN_DELETE`, `IN_MOVE` and we want to run the commands from a bash script which we'll call `cdn-auto-version.sh` and place in the `/` root folder. The content of the `cdn-auto-version.sh` will be:
 
 ```bash
 #!/bin/bash
