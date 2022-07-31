@@ -8,7 +8,7 @@ export default function Document() {
         <meta name="description" content="A collection of technical posts." />
         <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          src="https://www.googletagmanager.com/gtag/js?id=G-H1DT8LBE3Y"
         ></script>
         <script
           dangerouslySetInnerHTML={{
