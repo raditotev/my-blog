@@ -8,8 +8,10 @@ const TimeStamp = ({ date, updated }) => {
       <time dateTime={date}>{formattedDate}</time>
       <style jsx>{`
         span {
-          color: #333;
-          font-size: 0.9rem;
+          color: var(--text-secondary);
+          font-size: 0.85rem;
+          display: block;
+          margin-bottom: 0.5rem;
         }
       `}</style>
     </span>

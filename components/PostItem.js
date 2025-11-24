@@ -12,38 +12,71 @@ const PostItem = ({ post }) => {
         <Card>
           <ListCategories categories={post.categories} />
           <Link href={`/posts/${id}`}>
-            <a>
+            <a className="post-title">
               <h3>{title}</h3>
             </a>
           </Link>
           <TimeStamp date={date} updated={updated} />
-          <p>{description}</p>
-          <Link href={`/posts/${id}`}>
-            <a className="read-more">more &gt;</a>
-          </Link>
+          <p className="description">{description}</p>
+          <div className="footer">
+            <Link href={`/posts/${id}`}>
+              <a className="read-more">Read more <span className="arrow">→</span></a>
+            </Link>
+          </div>
         </Card>
       </li>
 
       <style jsx>{`
         .post-item {
-          position: relative;
+          height: 100%;
         }
+
+        .post-title {
+          text-decoration: none;
+          display: block;
+        }
+
         h3 {
-          font-size: 32px;
-          margin: 0.3rem auto;
-          cursor: pointer;
+          font-size: 1.5rem;
+          margin: 0.5rem 0;
+          color: var(--text-primary);
+          transition: color 0.2s ease;
         }
-        p {
-          margin-bottom: 2rem;
+
+        .post-title:hover h3 {
+          color: var(--accent-primary);
         }
-        a h3 {
-          color: black;
+
+        .description {
+          margin-bottom: 1.5rem;
+          color: var(--text-secondary);
+          font-size: 1rem;
+          line-height: 1.6;
+          flex-grow: 1;
         }
-        a.read-more {
-          position: absolute;
-          right: 10px;
-          bottom: 10px;
-          color: crimson;
+
+        .footer {
+          margin-top: auto;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .read-more {
+          color: var(--accent-primary);
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+        }
+
+        .arrow {
+          transition: transform 0.2s ease;
+        }
+
+        .read-more:hover .arrow {
+          transform: translateX(4px);
         }
       `}</style>
     </>

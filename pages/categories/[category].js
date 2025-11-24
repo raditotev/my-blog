@@ -35,24 +35,26 @@ const Category = ({ category, posts }) => {
         <ListPosts posts={posts} />
       </Layout>
       <style jsx>{`
-        category {
+        .category {
+          margin-bottom: 2rem;
         }
         h2 {
           width: 100%;
-          border-bottom: 1px solid #ddd;
+          border-bottom: 1px solid var(--border-color);
           line-height: 0.1em;
           margin: 10px 0 20px;
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           text-align: right;
           text-transform: uppercase;
-          z-index: 10;
+          color: var(--text-secondary);
         }
         h2 span {
-          background: #fff;
+          background: var(--bg-primary);
           padding: 0 10px;
         }
         span.selected-category {
-          color: crimson;
+          color: var(--accent-primary);
+          font-weight: 700;
         }
       `}</style>
     </>

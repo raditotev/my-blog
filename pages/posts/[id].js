@@ -56,32 +56,54 @@ const Post = ({ post }) => {
       <style jsx>{`
         .post {
           width: 100%;
+          animation: fadeIn 0.5s ease-in-out;
         }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
         header {
           text-align: center;
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid var(--border-color);
         }
+
         .post h1 {
-          margin-bottom: 0.2rem;
+          margin-bottom: 1rem;
+          font-size: 3rem;
+          background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
-        a {
-          color: black;
-        }
+
         footer {
+          margin-top: 4rem;
+          padding-top: 2rem;
+          border-top: 1px solid var(--border-color);
           display: flex;
-          flex-wrap: wrap;
           justify-content: space-between;
+          align-items: center;
         }
+
         footer a.go-back {
-          font-size: 1.5rem;
+          font-size: 1.2rem;
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          background: var(--bg-secondary);
+          transition: all 0.2s ease;
         }
-        @media (max-width: 820px) {
-          footer {
-            display: block;
-          }
-          footer a.go-back {
-            float: right;
-          }
+
+        footer a.go-back:hover {
+          background: var(--accent-glow);
+          transform: translateX(-4px);
+        }
+
+        @media (max-width: 640px) {
+          .post h1 { font-size: 2rem; }
+          header { margin-bottom: 2rem; }
         }
       `}</style>
     </Layout>

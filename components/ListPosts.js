@@ -12,13 +12,10 @@ const ListPosts = ({ posts }) => {
         ul.posts {
           list-style: none;
           padding: 0;
-          display: flex;
-          flex-wrap: wrap;
-          flex-direction: row;
-          justify-content: space-evenly;
-          align-items: stretch;
-          align-content: stretch;
-          gap: 20px;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 2rem;
         }
       `}</style>
     </>
