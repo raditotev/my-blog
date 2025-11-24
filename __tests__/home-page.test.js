@@ -30,7 +30,7 @@ test('home page', () => {
       within(postsSection).getByText(post.description)
     ).toBeInTheDocument();
     expect(
-      within(postsSection).getAllByRole('link', { name: 'more >' }).length
+      within(postsSection).getAllByRole('link', { name: /read more/i }).length
     ).toBe(4);
   });
 });
