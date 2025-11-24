@@ -54,18 +54,42 @@ const Layout = ({ children }) => {
           margin: auto;
         }
 
-        @media (max-width: 820px) {
-          body {
-            font-size: 18px;
-          }
+        /* Markdown Alerts */
+        .markdown-alert {
+          padding: 1rem 1.5rem;
+          margin-bottom: 1.5rem;
+          border-left: 4px solid;
+          border-radius: 8px;
+          background-color: var(--bg-secondary);
+        }
 
-          p {
-            line-height: 28px;
-          }
+        .markdown-alert-note { border-color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
+        .markdown-alert-note .markdown-alert-title { color: #38bdf8; }
 
-          img {
-            max-width: 80vw;
-          }
+        .markdown-alert-tip { border-color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+        .markdown-alert-tip .markdown-alert-title { color: #22c55e; }
+
+        .markdown-alert-important { border-color: #a855f7; background: rgba(168, 85, 247, 0.1); }
+        .markdown-alert-important .markdown-alert-title { color: #a855f7; }
+
+        .markdown-alert-warning { border-color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+        .markdown-alert-warning .markdown-alert-title { color: #f59e0b; }
+
+        .markdown-alert-caution { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+        .markdown-alert-caution .markdown-alert-title { color: #ef4444; }
+
+        .markdown-alert-title {
+          display: flex;
+          font-weight: bold;
+          align-items: center;
+          margin-bottom: 4px;
+          font-family: var(--font-heading);
+        }
+
+        .markdown-alert-title svg {
+          margin-right: 8px;
+        }
+
         }
       `}</style>
 

@@ -1,4 +1,6 @@
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkGithubBlockquoteAlert from 'remark-github-blockquote-alert';
 
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Layout from '../../components/Layout';
@@ -38,7 +40,12 @@ const Post = ({ post }) => {
           <h1>{post.title}</h1>
           <TimeStamp date={post.date} updated={post.updated}></TimeStamp>
         </header>
-        <ReactMarkdown components={CodeBlock}>{post.markdown}</ReactMarkdown>
+        <ReactMarkdown
+          components={CodeBlock}
+          remarkPlugins={[remarkGfm, remarkGithubBlockquoteAlert]}
+        >
+          {post.markdown}
+        </ReactMarkdown>
         <footer>
           <ListCategories categories={post.categories} />
           <Link href="/">
