@@ -92,7 +92,8 @@ This step combines the learned adaptations with the original weights, resulting 
 
 ## Step 5: Copying the Tokenizer
 
-> [!NOTE] I didn't have to do this step when fine-tuning Llama-3.2-3B-Instruct
+> [!NOTE]
+> I didn't have to do this step when fine-tuning Llama-3.2-3B-Instruct
 
 Unlike some frameworks (e.g., Ollama's built-in fine-tuning), MLX_LM doesn't automatically include the tokenizer in the fused model. You'll need to copy it manually from the base model's cache.
 
