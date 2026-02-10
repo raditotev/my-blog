@@ -20,6 +20,12 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+// Mock next/dynamic so LoadableComponent doesn't trigger async state updates (act warning)
+jest.mock('next/dynamic', () => ({
+  __esModule: true,
+  default: () => () => null,
+}));
+
 // Mock remark plugins to avoid ES module issues
 jest.mock('remark-gfm', () => () => {});
 jest.mock('remark-github-blockquote-alert', () => () => {});
