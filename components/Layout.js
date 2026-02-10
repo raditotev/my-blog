@@ -1,6 +1,12 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Link from 'next/link';
 import ThemeToggle from './ThemeToggle';
+
+const PlausibleAnalytics = dynamic(
+  () => import('./PlausibleAnalytics'),
+  { ssr: false }
+);
 
 export const siteTitle = "Radi's Blog";
 
@@ -22,6 +28,7 @@ const Layout = ({ children }) => {
         </div>
       </header>
       <main>{children}</main>
+      <PlausibleAnalytics />
       <footer className="site-footer">
         <p>© {new Date().getFullYear()} Radi Totev. All rights reserved.</p>
       </footer>
